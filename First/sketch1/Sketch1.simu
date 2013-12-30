@@ -1,0 +1,33 @@
+<circuit type="simu">
+ 
+Resistor-7: 
+<item labelrot="-90" objectName="Resistor-7" x="-228" y="12" itemtype="Resistor" rotation="90" labelx="0" Resistance="100" labely="-24" Show_id="false" id="Resistor-7"/>
+ 
+Ground (0 V)-5: 
+<item labelrot="0" objectName="Ground (0 V)-5" x="-228" y="60" itemtype="Ground" rotation="0" labelx="0" labely="-24" Show_id="false" id="Ground (0 V)-5"/>
+ 
+Arduino Uno-1boardled: 
+<item labelrot="0" threshold="2.4" objectName="Arduino Uno-1boardled" x="-45" y="14" itemtype="LEDSMD" rotation="0" labelx="0" labely="-24" MaxCurrent="0.003" Show_id="false" id="Arduino Uno-1boardled"/>
+ 
+Arduino Uno-1: 
+<item labelrot="0" objectName="Arduino Uno-1" x="-76" program="C:/Users/Joakim/AppData/Local/Temp/build3158349361251425774.tmp/sketch1.cpp.hex" y="-68" itemtype="Arduino" rotation="0" labelx="-26" labely="-132" Show_id="false" id="Arduino Uno-1"/>
+ 
+Fixed Volt.-1: 
+<item labelrot="0" objectName="Fixed Volt.-1" x="-212" y="-164" itemtype="Fixed Voltage" rotation="0" labelx="-64" labely="-24" Voltage="5" Show_id="false" id="Fixed Volt.-1"/>
+ 
+Led-3: 
+<item labelrot="-90" threshold="2.4" objectName="Led-3" x="-228" y="-36" itemtype="Led" rotation="90" labelx="0" labely="-24" MaxCurrent="0.02" Show_id="false" id="Led-3"/>
+ 
+Connector-2: 
+<item labelrot="0" objectName="Connector-2" x="-196" startpinid="Fixed Volt.-1-outnod" y="-164" itemtype="Connector" pointList="-196,-164,-196,-164,-148,-164" rotation="0" labelx="0" labely="-24" endpinid="Arduino Uno-1-PD0" Show_id="false" id="Connector-2" enodeid="enode-2"/>
+ 
+Connector-5: 
+<item labelrot="0" objectName="Connector-5" x="-148" startpinid="Arduino Uno-1-PB5" y="-52" itemtype="Connector" pointList="-148,-52,-148,-52,-228,-52" rotation="0" labelx="0" labely="-24" endpinid="Led-3lnod" Show_id="false" id="Connector-5" enodeid="enode-5"/>
+ 
+Connector-8: 
+<item labelrot="0" objectName="Connector-8" x="-228" startpinid="Led-3rnod" y="-20" itemtype="Connector" pointList="-228,-20,-228,-4,-228,-4" rotation="0" labelx="0" labely="-24" endpinid="Resistor-7lnod" Show_id="false" id="Connector-8" enodeid="enode-8"/>
+ 
+Connector-9: 
+<item labelrot="0" objectName="Connector-9" x="-228" startpinid="Resistor-7rnod" y="28" itemtype="Connector" pointList="-228,28,-228,44" rotation="0" labelx="0" labely="-24" endpinid="Ground (0 V)-5Gnod" Show_id="false" id="Connector-9" enodeid="enode-9"/>
+ 
+</circuit>
