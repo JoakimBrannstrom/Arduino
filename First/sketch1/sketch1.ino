@@ -1,42 +1,26 @@
+
 // the setup routine runs once when you press reset:
 void setup() {
   pinMode(0, INPUT);
   pinMode(13, OUTPUT);
-  /*
-  // initialize the digital pin as an output.
-  for(int i = 0; i <= 13; i++)
-  {
-    pinMode(i, OUTPUT);     
-  }
+}
 
-  for(int i = 0; i <= 13; i++)
-  {
-    // turn the LED on (HIGH is the voltage level)
-    digitalWrite(i, HIGH);
-  }
+void toggle(int pinNr)
+{
+  digitalWrite(pinNr, HIGH);
+  delay(100);
+  digitalWrite(pinNr, LOW);
+  delay(100);
+}
 
-  delay(2000);
-
-  for(int i = 0; i <= 13; i++)
-  {
-    // turn the LED off by making the voltage LOW
-    digitalWrite(i, LOW);
-  }
-  */
+void conditionalAction(bool condition, void (*action)(int), int args)
+{
+  if(condition)
+    action(args);
 }
 
 // the loop routine runs over and over again forever:
 void loop() {
-  int value = digitalRead(0);
-  if(value == 1)
-  {
-    // turn the LED on (HIGH is the voltage level)
-    digitalWrite(13, HIGH);
-    delay(100);
-
-    // turn the LED off by making the voltage LOW
-    digitalWrite(13, LOW);
-    delay(100);
-  }
+  conditionalAction(digitalRead(0) == 1, toggle, 13);
 }
 

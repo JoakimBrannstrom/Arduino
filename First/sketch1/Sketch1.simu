@@ -1,5 +1,11 @@
 <circuit type="simu">
  
+Node-12: 
+<item labelrot="0" objectName="Node-12" x="-204" y="-52" itemtype="Node" rotation="0" labelx="6" labely="-18" Show_id="false" id="Node-12"/>
+ 
+Probe-10: 
+<item labelrot="45" objectName="Probe-10" x="-188" y="-116" itemtype="Probe" rotation="-45" labelx="-32" labely="-24" Show_id="false" Show_volt="true" id="Probe-10"/>
+ 
 Resistor-7: 
 <item labelrot="-90" objectName="Resistor-7" x="-228" y="12" itemtype="Resistor" rotation="90" labelx="0" Resistance="100" labely="-24" Show_id="false" id="Resistor-7"/>
  
@@ -22,12 +28,18 @@ Connector-2:
 <item labelrot="0" objectName="Connector-2" x="-196" startpinid="Fixed Volt.-1-outnod" y="-164" itemtype="Connector" pointList="-196,-164,-196,-164,-148,-164" rotation="0" labelx="0" labely="-24" endpinid="Arduino Uno-1-PD0" Show_id="false" id="Connector-2" enodeid="enode-2"/>
  
 Connector-5: 
-<item labelrot="0" objectName="Connector-5" x="-148" startpinid="Arduino Uno-1-PB5" y="-52" itemtype="Connector" pointList="-148,-52,-148,-52,-228,-52" rotation="0" labelx="0" labely="-24" endpinid="Led-3lnod" Show_id="false" id="Connector-5" enodeid="enode-5"/>
+<item labelrot="0" objectName="Connector-5" x="-148" startpinid="Arduino Uno-1-PB5" y="-52" itemtype="Connector" pointList="-148,-52,-204,-52" rotation="0" labelx="0" labely="-24" endpinid="Node-12-0" Show_id="false" id="Connector-5" enodeid="enode-11"/>
  
 Connector-8: 
 <item labelrot="0" objectName="Connector-8" x="-228" startpinid="Led-3rnod" y="-20" itemtype="Connector" pointList="-228,-20,-228,-4,-228,-4" rotation="0" labelx="0" labely="-24" endpinid="Resistor-7lnod" Show_id="false" id="Connector-8" enodeid="enode-8"/>
  
 Connector-9: 
 <item labelrot="0" objectName="Connector-9" x="-228" startpinid="Resistor-7rnod" y="28" itemtype="Connector" pointList="-228,28,-228,44" rotation="0" labelx="0" labely="-24" endpinid="Ground (0 V)-5Gnod" Show_id="false" id="Connector-9" enodeid="enode-9"/>
+ 
+Connector-11: 
+<item labelrot="0" objectName="Connector-11" x="-204" startpinid="Probe-10inpin" y="-100" itemtype="Connector" pointList="-204,-100,-204,-52" rotation="0" labelx="0" labely="-24" endpinid="Node-12-1" Show_id="false" id="Connector-11" enodeid="enode-11"/>
+ 
+Connector13: 
+<item labelrot="0" objectName="Connector13" x="-204" startpinid="Node-12-2" y="-52" itemtype="Connector" pointList="-204,-52,-228,-52" rotation="0" labelx="0" labely="-24" endpinid="Led-3lnod" Show_id="false" id="Connector13" enodeid="enode-11"/>
  
 </circuit>
