@@ -13,6 +13,9 @@ bool ballDirectionDown;
 long hitCount = 0;
 bool gameOver = false;
 
+short bufferPosition = 0;
+byte screenBuffer[504];
+
 void setup()
 {
 	startGame();
@@ -29,8 +32,8 @@ void setup()
 
 void loop()
 {
-	//pulse();
-	delay(40);
+	pulse();
+	//delay(20);
 
 	if(hitCount < 6)
 	{
@@ -56,7 +59,7 @@ void startGame()
 	rightPaddle.Y = ball.Y;
 
 	initializeLcd();
-	initializeTimer(&pulse, 8);
+	//initializeTimer(&pulse, 16);
 
 	//pulse();
 }
@@ -81,11 +84,14 @@ void pulse()
 	{
 		SetBallPosition();
 
-		clearDisplay();
+		// clearDisplay();
+		clearBuffer();
 
 		drawBall(ball.X, ball.Y);
 		drawPaddle(leftPaddle.X, leftPaddle.Y);
 		drawPaddle(rightPaddle.X, rightPaddle.Y);
+
+		sendBufferToLcd();
 
 		if(leftPaddleMissed())
 			GameOver("Winner: Right");
@@ -158,10 +164,69 @@ void SetBallPosition()
 
 void drawBall(short x, short y)
 {
-	drawBlock(x, y, ballSize, ballSize);
+	// drawBlock(x, y, ballSize, ballSize);
+	drawBuffer(x, y, ballSize, ballSize);
 }
 
 void drawPaddle(short x, short y)
 {
-	drawBlock(x, y, 2, 8);
+	//drawBlock(x, y, 2, 8);
+	drawBuffer(x, y, 2, 8);
+}
+
+void drawBuffer(short x, short y, short width, short height)
+{
+	short bigX = x / width;
+	short smallX = x % width;
+	const int byteSize = 8;
+	short bigY = y / byteSize;
+	short smallY = y % byteSize;
+
+	// LcdXY(bigX * width + smallX, bigY);
+	bufferXY(bigX * width + smallX, bigY);
+	long data = (0x0001 << height) - 1;
+	long smallData = data << smallY;
+	byte bigData = smallData >> 8;
+	for(int i = smallX; i < smallX + width; i++)
+	{
+		//LcdWriteData(smallData);
+		bufferWriteData(smallData);
+	}
+
+	//LcdXY(bigX * width + smallX, bigY + 1);
+	bufferXY(bigX * width + smallX, bigY + 1);
+	for(int i = smallX; i < smallX + width; i++)
+	{
+		// LcdWriteData(bigData);
+		bufferWriteData(bigData);
+	}
+}
+
+void bufferXY(short x, short y)
+{
+	bufferPosition = x + (y * 84);
+}
+
+void bufferWriteData(byte data)
+{
+	if(0 <= bufferPosition && bufferPosition < 504)
+	{
+		screenBuffer[bufferPosition] = data;
+		bufferPosition++;
+	}
+}
+
+void sendBufferToLcd()
+{
+	LcdXY(0, 0);
+	
+	for(int i = 0; i < 504; i++)
+		LcdWriteData(screenBuffer[i]);
+}
+
+void clearBuffer()
+{
+	bufferPosition = 0;
+	for(int i = 0; i < 504; i++)
+		screenBuffer[i] = 0x00;
 }

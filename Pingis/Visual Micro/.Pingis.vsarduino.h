@@ -41,6 +41,11 @@ void GameOver(char *winner);
 void SetBallPosition();
 void drawBall(short x, short y);
 void drawPaddle(short x, short y);
+void drawBuffer(short x, short y, short width, short height);
+void bufferXY(short x, short y);
+void bufferWriteData(byte data);
+void sendBufferToLcd();
+void clearBuffer();
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard\pins_arduino.h" 
