@@ -11,13 +11,12 @@ bool ballDirectionRight;
 bool ballDirectionDown;
 
 long hitCount = 0;
+bool gameOver = false;
 
 void setup()
 {
-	// LcdXY(20,2);
-	// LcdWriteString("THE END");
-
 	startGame();
+
 	/*
 	int x = 0;
 	for(int i = 0; i < 48; i++)
@@ -30,20 +29,23 @@ void setup()
 
 void loop()
 {
-	pulse();
-	delay(200);
+	//pulse();
+	delay(40);
 
-	if(!ballDirectionRight)
-		movePaddle(leftPaddle, (leftPaddle.Y + ballSize/2 - ball.Y) < 0);
+	if(hitCount < 6)
+	{
+		if(!ballDirectionRight)
+			movePaddle(leftPaddle, (leftPaddle.Y - ball.Y) < 0);
 
-	if(ballDirectionRight)
-		movePaddle(rightPaddle, (rightPaddle.Y + ballSize/2 - ball.Y) < 0);
+		if(ballDirectionRight)
+			movePaddle(rightPaddle, (rightPaddle.Y - ball.Y) < 0);
+	}
 }
 
 void startGame()
 {
-	ballDirectionRight = true;
-	ballDirectionRight = true;
+	ballDirectionRight = false;
+	ballDirectionDown = true;
 
 	ball.X = getDisplayWidth() / 2;
 	ball.Y = getDisplayHeight() / 2;
@@ -54,7 +56,7 @@ void startGame()
 	rightPaddle.Y = ball.Y;
 
 	initializeLcd();
-	//initializeTimer(&pulse);
+	initializeTimer(&pulse, 8);
 
 	//pulse();
 }
@@ -62,20 +64,77 @@ void startGame()
 void movePaddle(COORD &paddle, bool down)
 {
 	if(down)
-		paddle.Y++;
+	{
+		if(paddle.Y < getDisplayHeight() - 8)
+			paddle.Y++;
+	}
 	else
-		paddle.Y--;
+	{
+		if(paddle.Y > 0)
+			paddle.Y--;
+	}
 }
 
 void pulse()
 {
-	SetBallPosition();
+	if(!gameOver)
+	{
+		SetBallPosition();
+
+		clearDisplay();
+
+		drawBall(ball.X, ball.Y);
+		drawPaddle(leftPaddle.X, leftPaddle.Y);
+		drawPaddle(rightPaddle.X, rightPaddle.Y);
+
+		if(leftPaddleMissed())
+			GameOver("Winner: Right");
+		else if(rightPaddleMissed())
+			GameOver("Winner: Left");
+	}
+}
+
+bool leftPaddleMissed()
+{
+	if(ball.X < 1)
+	{
+		short distance = ball.Y - leftPaddle.Y;
+		if(distance < 0 || distance > 7)
+			return true;
+
+		hitCount++;
+	}
+
+	return false;
+}
+
+bool rightPaddleMissed()
+{
+	if(ball.X >= 82)
+	{
+		short distance = ball.Y - rightPaddle.Y;
+		if(distance < 0 || distance > 7)
+			return true;
+
+		hitCount++;
+	}
+
+	return false;
+}
+
+void GameOver(char *winner)
+{
+	gameOver = true;
 
 	clearDisplay();
 
-	drawBall(ball.X, ball.Y);
-	drawPaddle(leftPaddle.X, leftPaddle.Y);
-	drawPaddle(rightPaddle.X, rightPaddle.Y);
+	LcdXY(4, 1);
+	LcdWriteString(winner);
+
+	LcdXY(18, 3);
+	char score[15];
+	sprintf(score, "Score: %d", hitCount);
+	LcdWriteString(score);
 }
 
 void SetBallPosition()
@@ -99,40 +158,10 @@ void SetBallPosition()
 
 void drawBall(short x, short y)
 {
-	short bigX = x / 4;
-	short smallX = x % 4;
-	short bigY = y / 8;
-	short smallY = y % 8;
-
-	LcdXY(bigX*4+smallX, bigY);
-	long data = (0x0001 << ballSize) - 1;
-	long smallData = data << smallY;
-	byte bigData = smallData >> 8;
-	for(int i = smallX; i < smallX + ballSize; i++)
-	{
-		LcdWriteData(smallData);
-	}
-
-	LcdXY(bigX*4+smallX, bigY+1);
-	for(int i = smallX; i < smallX + ballSize; i++)
-	{
-		LcdWriteData(bigData);
-	}
+	drawBlock(x, y, ballSize, ballSize);
 }
 
 void drawPaddle(short x, short y)
 {
-	short bigY = y / 8;
-	short smallY = y % 8;
-
-	LcdXY(x, bigY);
-	long data = 0xff;
-	long smallData = data << smallY;
-	byte bigData = smallData >> 8;
-	LcdWriteData(smallData);
-	LcdWriteData(smallData);
-
-	LcdXY(x, bigY+1);
-	LcdWriteData(bigData);
-	LcdWriteData(bigData);
+	drawBlock(x, y, 2, 8);
 }

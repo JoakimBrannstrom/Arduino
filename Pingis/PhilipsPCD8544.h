@@ -23,7 +23,7 @@ void clearDisplay(void);
 short getDisplayWidth(void);
 short getDisplayHeight(void);
 void drawFrame(void);
-void RawWriteDisplay(boolean *pixelBuffer);
+void drawBlock(short x, short y, short width, short height);
 void LcdWriteString(char *characters);
 void LcdWriteCharacter(char character);
 void LcdWriteData(byte data);

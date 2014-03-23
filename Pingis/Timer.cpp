@@ -2,7 +2,7 @@
 
 void (*timerPulse) ();
 
-void initializeTimer(void (*timerFunc) ())
+void initializeTimer(void (*timerFunc) (), short pulsesPerSecond)
 {
 	timerPulse = timerFunc;
 
@@ -14,7 +14,7 @@ void initializeTimer(void (*timerFunc) ())
 	TCCR1B = 0;		// same for TCCR1B
  
 	// set compare match register to desired timer count:
-	OCR1A = getTimerCountForOneSecond();
+	OCR1A = getTimerCountForOneSecond() / pulsesPerSecond;
 
 	// turn on CTC mode:
 	TCCR1B |= (1 << WGM12);

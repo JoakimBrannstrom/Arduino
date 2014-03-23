@@ -74,22 +74,27 @@ void drawFrame(void)
 	}
 }
 
-void RawWriteDisplay(boolean *pixelBuffer)
+void drawBlock(short x, short y, short width, short height)
 {
-	short width = getDisplayWidth();
-	short height = getDisplayHeight();
-	int displaySize = width * height;
-	int i, x, y;
+	short bigX = x / width;
+	short smallX = x % width;
+	const int byteSize = 8;
+	short bigY = y / byteSize;
+	short smallY = y % byteSize;
 
-	for(i = 0; i < displaySize; i++)
+	LcdXY(bigX * width + smallX, bigY);
+	long data = (0x0001 << height) - 1;
+	long smallData = data << smallY;
+	byte bigData = smallData >> 8;
+	for(int i = smallX; i < smallX + width; i++)
 	{
-		x = i % width;
-		y = i % height;
-		LcdXY(x, y);
-		if(pixelBuffer[i])
-			LcdWrite(1, 0x01);
-		else
-			LcdWrite(0, 0x01);
+		LcdWriteData(smallData);
+	}
+
+	LcdXY(bigX * width + smallX, bigY + 1);
+	for(int i = smallX; i < smallX + width; i++)
+	{
+		LcdWriteData(bigData);
 	}
 }
 

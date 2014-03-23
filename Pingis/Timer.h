@@ -5,7 +5,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-void initializeTimer(void (*timerFunc) ());
+void initializeTimer(void (*timerFunc) (), short pulsesPerSecont);
 int getTimerCountForOneSecond();
 
 #endif

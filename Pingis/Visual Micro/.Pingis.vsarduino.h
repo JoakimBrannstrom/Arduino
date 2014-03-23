@@ -35,6 +35,9 @@ extern "C" void __cxa_pure_virtual() {;}
 void startGame();
 void movePaddle(COORD &paddle, bool down);
 void pulse();
+bool leftPaddleMissed();
+bool rightPaddleMissed();
+void GameOver(char *winner);
 void SetBallPosition();
 void drawBall(short x, short y);
 void drawPaddle(short x, short y);
