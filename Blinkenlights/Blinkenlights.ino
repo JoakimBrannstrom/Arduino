@@ -9,7 +9,7 @@ Switches between a number of different modes of how the leds should light up
 #include <avr/interrupt.h>
 
 #define FIRSTMODE 0
-#define LASTMODE 4
+#define LASTMODE 5
 const int minLed = 9;
 const int maxLed = 13;
 
@@ -18,7 +18,7 @@ int currentLed;
 int nextLed;
 bool up;
 
-int mode = FIRSTMODE;
+int mode = 5; //FIRSTMODE;
 int timerCount = 0;
 
 void reset()
@@ -39,7 +39,7 @@ void setup()
 	for(int i = minLed; i <= maxLed; i++)
 		pinMode(i, OUTPUT);
 
-	initializeTimer();
+// 	initializeTimer();
 	reset();
 }
 
@@ -61,6 +61,9 @@ void loop()
 			break;
 		case 4:
 			lightInTheMiddle();
+			break;
+		case 5:
+			jump();
 			break;
 	}
 }
@@ -129,6 +132,20 @@ void rollInTheMiddle()
 
 	digitalWrite(lowLed, HIGH);
 	digitalWrite(highLed, HIGH);
+
+	delay(120);
+}
+
+void jump()
+{
+	int range = maxLed - minLed;
+	currentLed += 4;
+	if(currentLed > maxLed)
+		currentLed -= range;
+
+	turnOffAllLeds();
+
+	digitalWrite(currentLed, HIGH);
 
 	delay(120);
 }

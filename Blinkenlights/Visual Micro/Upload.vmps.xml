@@ -1,12 +1,59 @@
 <VisualMicro>
   <Program Name="Blinkenlights" Ext=".ino" Location="D:\Dropbox\Dev\Git\Arduino\Blinkenlights">
     <Platform Name="arduino10x" Package="arduino" Platform="avr" Architecture="avr">
-      <Board Name="uno" Description="Arduino Uno" CoreFolder="C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" VariantFullPath="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" McuIdePath="C:\Program Files (x86)\Arduino" McuSketchBookPath="C:\Users\Joakim\Documents\Arduino" name="Arduino Uno" upload.protocol="arduino" upload.maximum_size="32256" upload.speed="115200" bootloader.low_fuses="0xff" bootloader.high_fuses="0xde" bootloader.extended_fuses="0x05" bootloader.path="optiboot" bootloader.file="optiboot_atmega328.hex" bootloader.unlock_bits="0x3F" bootloader.lock_bits="0x0F" build.mcu="atmega328p" build.f_cpu="16000000L" build.core="arduino" build.variant="standard" runtime.ide.path="C:\Program Files (x86)\Arduino" build.system.path="C:\Program Files (x86)\Arduino\hardware\arduino\system" runtime.ide.version="105" originalid="uno" vm.platform.root.path="C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x" build.core.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" build.core.parentfolder.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\cores" build.core.coresparentfolder.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino" vm.core.include="arduino.h" ide.hint="Arduino 0023 and 1.0.x Ide" ide.location.key="Arduino" ide.location.ide.winreg="Arduino 1.0.x Application" ide.location.sketchbook.winreg="Arduino 1.0.x Sketchbook" ide.location.sketchbook.preferences="sketchbook.path" ide.location.sketchbook.default="%MYDOCUMENTS%\arduino" ide.location.preferences="%VM_APPDATA_ROAMING%\arduino\preferences.txt" ide.default.package="arduino" ide.default.platform="avr" ide.multiplatform="true" ide.includes="arduino.h" ide.platformswithoutpackage="true" ide.includes.fallback="wprogram.h" ide.extension="ino" ide.extension.fallback="pde" ide.versionLTEQ="149" ide.exe="arduino.exe" ide.hosts="atmel" ide.url="http://arduino.cc/en/Main/Software" vm.debug="true" software="ARDUINO" ide.appid="arduino10x" location.sketchbook="C:\Users\Joakim\Documents\Arduino" build.board="AVR_UNO" vm.boardsource.path="C:\Program Files (x86)\Arduino\hardware\arduino" vm.platformname.name="avr" build.arch="AVR" build.variant.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" compiler.path="C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\" includes=" -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino&quot;  -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard&quot; " build.path="C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno" build.project_name="Blinkenlights" build.variant.path="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" archive_file="core.a" object_file="C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno\Blinkenlights.cpp.o" source_file="C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno\Blinkenlights.cpp" object_files="&quot;C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno\Blinkenlights.cpp.o&quot; " build.architecture="avr" vmresolved.compiler.path="C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\" vmresolved.tools.path="C:\Program Files (x86)\Arduino\hardware\tools\avr" />
+      <Board Name="uno" Description="Arduino Uno" CoreFolder="C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" VariantFullPath="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" McuIdePath="C:\Program Files (x86)\Arduino" McuSketchBookPath="C:\Users\Joakim\Documents\Arduino" name="Arduino Uno" upload.protocol="arduino" upload.maximum_size="32256" upload.speed="115200" bootloader.low_fuses="0xff" bootloader.high_fuses="0xde" bootloader.extended_fuses="0x05" bootloader.path="optiboot" bootloader.file="optiboot_atmega328.hex" bootloader.unlock_bits="0x3F" bootloader.lock_bits="0x0F" build.mcu="atmega328p" build.f_cpu="16000000L" build.core="arduino" build.variant="standard" runtime.ide.path="C:\Program Files (x86)\Arduino" build.system.path="C:\Program Files (x86)\Arduino\hardware\arduino\system" runtime.ide.version="105" originalid="uno" vm.platform.root.path="C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x" build.core.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" build.core.parentfolder.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\cores" build.core.coresparentfolder.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino" vm.core.include="arduino.h" ide.hint="Arduino 0023 and 1.0.x Ide" ide.location.key="Arduino" ide.location.ide.winreg="Arduino 1.0.x Application" ide.location.sketchbook.winreg="Arduino 1.0.x Sketchbook" ide.location.sketchbook.preferences="sketchbook.path" ide.location.sketchbook.default="%MYDOCUMENTS%\arduino" ide.location.preferences="%VM_APPDATA_ROAMING%\arduino\preferences.txt" ide.default.package="arduino" ide.default.platform="avr" ide.multiplatform="true" ide.includes="arduino.h" ide.platformswithoutpackage="true" ide.includes.fallback="wprogram.h" ide.extension="ino" ide.extension.fallback="pde" ide.versionLTEQ="149" ide.exe="arduino.exe" ide.hosts="atmel" ide.url="http://arduino.cc/en/Main/Software" vm.debug="true" software="ARDUINO" ide.appid="arduino10x" location.sketchbook="C:\Users\Joakim\Documents\Arduino" build.board="AVR_UNO" vm.boardsource.path="C:\Program Files (x86)\Arduino\hardware\arduino" vm.platformname.name="avr" build.arch="AVR" build.variant.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" compiler.path="C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\" includes=" -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino&quot;  -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard&quot;  -I&quot;C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers\VM_DBG&quot; " build.path="C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno" build.project_name="Blinkenlights" build.variant.path="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" archive_file="core.a" object_file="C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno\VM_DBG\VM_DBG.cpp.o" source_file="C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers\VM_DBG\VM_DBG.cpp" object_files="&quot;C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno\Blinkenlights.cpp.o&quot; &quot;C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno\VM_DBG\VM_mem_check.c.o&quot; &quot;C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno\VM_DBG\VM_DBG.cpp.o&quot; " build.architecture="avr" vmresolved.compiler.path="C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\" vmresolved.tools.path="C:\Program Files (x86)\Arduino\hardware\tools\avr" />
     </Platform>
-    <Compile CompilerErrors="0" ConfigurationName="Debug" StopOnError="False" OptimiseLibs="True" OptimiseCore="True" BuildPath="C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno" IsDebugStart="0" IncludeDebug="0" IncludesDebug="0" SketchName="Blinkenlights" IsCompiled="1" />
-    <Debug DebugEnabled="0" />
+    <Compile CompilerErrors="0" ConfigurationName="Debug" StopOnError="False" OptimiseLibs="True" OptimiseCore="True" BuildPath="C:\Users\Joakim\AppData\Local\VMicro\Arduino\Builds\Blinkenlights\uno" IsDebugStart="1" ReportDetailedMemoryUsage="1" SketchName="Blinkenlights" ReportDigitalPins="0" ReportAnalogPins="0" ReportI2C="0" ReportFreeMemory="0" IncludeDebug="1" LastDebugPreProcessorDefinitions="VM_DEBUG;VM_DEBUG_ENABLE 1;VM_DEBUG_BANDWIDTH_THROTTLE_MS 80;VM_DEBUGGER_TYPE_HARDWARESERIAL 0;VM_DEBUGGER_TYPE_SOFTWARESERIAL 1;VM_DEBUGGER_TYPE_FASTSERIAL 2;VM_DEBUGGER_TYPE_USB 3;VM_DEBUGGER_TYPE_TEENSY 4;VM_DEBUGGER_TYPE_UART 5;VM_DEBUGGER_TYPE_USART 6;VM_DEBUGGER_TYPE_USBSERIAL 7;VM_DEBUGGER_TYPE_TTYUART 8;VM_DEBUGGER_TYPE_NET_CONSOLE 9;VM_DEBUGGER_TYPE VM_DEBUGGER_TYPE_HARDWARESERIAL;" IncludesDebug="1" IsCompiled="1" />
+    <Debug EnableBreak="0" DebugEnabled="1" />
     <VCCodeModel>
       <VCCodeMacros />
     </VCCodeModel>
+    <BreakPoints>
+      <BreakPoint Index="1" Name="NightRider.ino, line 39" Id="57adffb8-cf77-47a0-b88a-cf8898dd9dd3" Enabled="1" Message="CurrentPin: {currentLed}" MessageTextType="0" PreProcessedMessage="CurrentPin: {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\dev\git\arduino\blinkenlights\nightrider.ino" FileLine="39" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='57adffb8-cf77-47a0-b88a-cf8898dd9dd3'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <MessageVariables>
+          <MessageVariable Name="currentLed" Index="1" />
+        </MessageVariables>
+      </BreakPoint>
+      <BreakPoint Index="2" Name="Blinkenlights.ino, line 37" Id="db691818-e831-4b91-9078-167ff3c60d23" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\dev\git\arduino\blinkenlights\blinkenlights.ino" FileLine="37" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='db691818-e831-4b91-9078-167ff3c60d23'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>30		nextLed = minLed;
+31		up = true;
+32	
+33		turnOffAllLeds();
+34	}
+35	
+36	void setup()
+--&gt;37	{
+38		// initialize the digital pins as an output.
+39		for(int i = minLed; i &lt;= maxLed; i++)
+40			pinMode(i, OUTPUT);
+41	
+42	// 	initializeTimer();
+43		reset();
+44	}
+45	
+46	void loop()
+</Source>
+      </BreakPoint>
+      <BreakPoint Index="3" Name="Blinkenlights.ino, line 51" Id="b8252ddb-47d2-4df4-9c4c-a0c7809c0c07" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\dev\git\arduino\blinkenlights\blinkenlights.ino" FileLine="51" FileColumn="1" FunctionName="loop()" FunctionLineOffset="5" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='6fcc2f70-1ee9-42d2-bfff-000da30ccb35'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>44	}
+45	
+46	void loop()
+47	{
+48		switch(mode)
+49		{
+50			case 0:
+--&gt;51				nightRider();
+52				break;
+53			case 1:
+54				flash();
+55				break;
+56			case 2:
+57				roll();
+58				break;
+59			case 3:
+60				rollInTheMiddle();
+</Source>
+      </BreakPoint>
+    </BreakPoints>
   </Program>
 </VisualMicro>
