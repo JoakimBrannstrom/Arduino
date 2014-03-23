@@ -14,7 +14,7 @@ long hitCount = 0;
 bool gameOver = false;
 
 short bufferPosition = 0;
-byte screenBuffer[504];
+byte screenBuffer[DisplaySizeInBytes];
 
 void setup()
 {
@@ -50,12 +50,12 @@ void startGame()
 	ballDirectionRight = false;
 	ballDirectionDown = true;
 
-	ball.X = getDisplayWidth() / 2;
-	ball.Y = getDisplayHeight() / 2;
+	ball.X = DisplayWidth / 2;
+	ball.Y = DisplayHeight / 2;
 
 	leftPaddle.X = 0;
 	leftPaddle.Y = ball.Y;
-	rightPaddle.X = getDisplayWidth() - 2;
+	rightPaddle.X = DisplayWidth - 2;
 	rightPaddle.Y = ball.Y;
 
 	initializeLcd();
@@ -68,7 +68,7 @@ void movePaddle(COORD &paddle, bool down)
 {
 	if(down)
 	{
-		if(paddle.Y < getDisplayHeight() - 8)
+		if(paddle.Y < DisplayHeight - 8)
 			paddle.Y++;
 	}
 	else
@@ -145,10 +145,10 @@ void GameOver(char *winner)
 
 void SetBallPosition()
 {
-	if(ball.X <= 0 || ball.X >= getDisplayWidth() - ballSize)
+	if(ball.X <= 0 || ball.X >= DisplayWidth - ballSize)
 		ballDirectionRight = !ballDirectionRight;
 
-	if(ball.Y <= 0 || ball.Y >= getDisplayHeight() - ballSize)
+	if(ball.Y <= 0 || ball.Y >= DisplayHeight - ballSize)
 		ballDirectionDown = !ballDirectionDown;
 
 	if(ballDirectionRight)
@@ -171,7 +171,7 @@ void drawBall(short x, short y)
 void drawPaddle(short x, short y)
 {
 	//drawBlock(x, y, 2, 8);
-	drawBuffer(x, y, 2, 8);
+	drawBuffer(x, y, 1, 8);
 }
 
 void drawBuffer(short x, short y, short width, short height)
@@ -182,34 +182,30 @@ void drawBuffer(short x, short y, short width, short height)
 	short bigY = y / byteSize;
 	short smallY = y % byteSize;
 
-	// LcdXY(bigX * width + smallX, bigY);
 	bufferXY(bigX * width + smallX, bigY);
 	long data = (0x0001 << height) - 1;
 	long smallData = data << smallY;
-	byte bigData = smallData >> 8;
+	byte bigData = smallData >> byteSize;
 	for(int i = smallX; i < smallX + width; i++)
 	{
-		//LcdWriteData(smallData);
 		bufferWriteData(smallData);
 	}
 
-	//LcdXY(bigX * width + smallX, bigY + 1);
 	bufferXY(bigX * width + smallX, bigY + 1);
 	for(int i = smallX; i < smallX + width; i++)
 	{
-		// LcdWriteData(bigData);
 		bufferWriteData(bigData);
 	}
 }
 
 void bufferXY(short x, short y)
 {
-	bufferPosition = x + (y * 84);
+	bufferPosition = x + (y * DisplayWidth);
 }
 
 void bufferWriteData(byte data)
 {
-	if(0 <= bufferPosition && bufferPosition < 504)
+	if(0 <= bufferPosition && bufferPosition < DisplaySizeInBytes)
 	{
 		screenBuffer[bufferPosition] = data;
 		bufferPosition++;
@@ -220,13 +216,13 @@ void sendBufferToLcd()
 {
 	LcdXY(0, 0);
 	
-	for(int i = 0; i < 504; i++)
+	for(int i = 0; i < DisplaySizeInBytes; i++)
 		LcdWriteData(screenBuffer[i]);
 }
 
 void clearBuffer()
 {
 	bufferPosition = 0;
-	for(int i = 0; i < 504; i++)
+	for(int i = 0; i < DisplaySizeInBytes; i++)
 		screenBuffer[i] = 0x00;
 }

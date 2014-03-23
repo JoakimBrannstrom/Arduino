@@ -28,34 +28,21 @@ void initializeLcd()
 
 void clearDisplay(void)
 {
-	int nrOfPixels = 84 * 48; // x * y
-	int nrOfCharacterPositions = nrOfPixels / 8; // 84 * 48 / 8 = 84 * 6 = 504
-	int i;
-	for(i = 0; i < 504; i++)
+	for(int i = 0; i < DisplaySizeInBytes; i++)
 		LcdWriteData(0x00); // clear LCD
-}
-
-short getDisplayWidth(void)
-{
-	return 84;
-}
-
-short getDisplayHeight(void)
-{
-	return 48;
 }
 
 void drawFrame(void)
 {
-	unsigned char  j;
+	unsigned char j;
 
-	for(j = 0; j < 84; j++) // Top
+	for(j = 0; j < DisplayWidth; j++) // Top
 	{
 		LcdXY(j, 0);
 		LcdWrite(LCD_DATA, 0x01);
 	}
 
-	for(j = 0; j < 84; j++) // Bottom
+	for(j = 0; j < DisplayWidth; j++) // Bottom
 	{
 		LcdXY(j, 5);
 		LcdWrite(LCD_DATA, 0x80);

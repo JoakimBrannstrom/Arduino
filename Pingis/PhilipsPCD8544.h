@@ -18,10 +18,12 @@
 #define DIN 9
 #define CLK 8
 
+#define DisplayWidth 84
+#define DisplayHeight 48
+#define DisplaySizeInBytes 504	// 84 * 48 / 8
+
 void initializeLcd();
 void clearDisplay(void);
-short getDisplayWidth(void);
-short getDisplayHeight(void);
 void drawFrame(void);
 void drawBlock(short x, short y, short width, short height);
 void LcdWriteString(char *characters);

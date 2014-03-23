@@ -14,7 +14,7 @@ void initializeTimer(void (*timerFunc) (), short pulsesPerSecond)
 	TCCR1B = 0;		// same for TCCR1B
  
 	// set compare match register to desired timer count:
-	OCR1A = getTimerCountForOneSecond() / pulsesPerSecond;
+	OCR1A = (getTimerCountForOneSecond() / pulsesPerSecond) - 1;	// leave one clock cycle, it's needed by the timer when resetting itself to zero
 
 	// turn on CTC mode:
 	TCCR1B |= (1 << WGM12);
@@ -40,7 +40,7 @@ int getTimerCountForOneSecond()
 	// => (# timer counts + 1) = 15625
 
 	// 16MHz
-	return 15625 - 1;	// leave one clock cycle, it's needed by the timer when resetting itself to zero
+	return 15625;
 }
 
 ISR(TIMER1_COMPA_vect)
