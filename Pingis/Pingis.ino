@@ -5,8 +5,8 @@
 COORD leftPaddle;
 COORD rightPaddle;
 
-const int ballSize = 4;
 COORD ball;
+const int ballSize = 4;
 bool ballDirectionRight;
 bool ballDirectionDown;
 
