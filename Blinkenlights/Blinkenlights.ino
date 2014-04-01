@@ -18,7 +18,7 @@ int currentLed;
 int nextLed;
 bool up;
 
-int mode = 5; //FIRSTMODE;
+int mode = FIRSTMODE;
 int timerCount = 0;
 
 void reset()
@@ -39,7 +39,8 @@ void setup()
 	for(int i = minLed; i <= maxLed; i++)
 		pinMode(i, OUTPUT);
 
-// 	initializeTimer();
+ 	initializeTimer();
+	randomSeed(millis());
 	reset();
 }
 
@@ -63,7 +64,7 @@ void loop()
 			lightInTheMiddle();
 			break;
 		case 5:
-			jump();
+			randomLed();
 			break;
 	}
 }
@@ -136,16 +137,11 @@ void rollInTheMiddle()
 	delay(120);
 }
 
-void jump()
+void randomLed()
 {
-	int range = maxLed - minLed;
-	currentLed += 4;
-	if(currentLed > maxLed)
-		currentLed -= range;
-
 	turnOffAllLeds();
 
-	digitalWrite(currentLed, HIGH);
+	digitalWrite(random() % 5 + minLed, HIGH);
 
 	delay(120);
 }

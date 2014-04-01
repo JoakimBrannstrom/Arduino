@@ -3,7 +3,6 @@
 //Board = Arduino Uno
 #define __AVR_ATmega328p__
 #define __AVR_ATmega328P__
-#define _VMDEBUG 1
 #define ARDUINO 105
 #define ARDUINO_MAIN
 #define __AVR__
@@ -39,7 +38,7 @@ void flash();
 void blink(int pin);
 void roll();
 void rollInTheMiddle();
-void jump();
+void randomLed();
 void lightInTheMiddle();
 bool goUp(int pin);
 int nextPin(int pin);
