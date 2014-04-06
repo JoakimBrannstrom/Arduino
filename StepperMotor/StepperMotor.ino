@@ -11,6 +11,7 @@
 #define anticlockwise(stepPhase, motorPins) (setOutput(stepPhase, motorPins))
 #define clockwise(stepPhase, motorPins) (setOutput(7 - stepPhase, motorPins))
 #define sensitivity 50
+#define stepDelayMs 900
 
 // declare variables for the motor pins
 int motorXPins[4] = { 4, 5, 6, 7 };
@@ -36,7 +37,7 @@ void setup()
 	sensorXReference = CalibrateSensor(sensorXPin, 3) / 3;
 	sensorYReference = CalibrateSensor(sensorYPin, 3) / 3;
 
-	Serial.begin(9600);
+	//Serial.begin(9600);
 }
 
 int CalibrateSensor(int sensorPin, int iteration)
@@ -54,13 +55,11 @@ void loop()
 	int motorXDirection = GetMotorDirection(sensorXPin, sensorXReference);
 	int motorYDirection = GetMotorDirection(sensorYPin, sensorYReference);
 
-	int delay = 900;
-
 	for(int i = 0; i < 8; i++)
 	{
 		RunMotor(i, motorXDirection, motorXPins);
 		RunMotor(i, motorYDirection, motorYPins);
-		delayMicroseconds(delay);
+		delayMicroseconds(stepDelayMs);
 	}
 }
 
