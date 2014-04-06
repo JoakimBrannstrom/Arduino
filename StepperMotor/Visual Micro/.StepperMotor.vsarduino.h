@@ -31,12 +31,10 @@ typedef unsigned char byte;
 extern "C" void __cxa_pure_virtual() {;}
 
 //
-int CalibrateSensor(int sensorPin);
+int CalibrateSensor(int sensorPin, int iteration);
 //
-void RunMotor(int sensorPin, int sensorReference, int *motorPins);
-void anticlockwise(int motorSpeed, int *motorPins);
-void clockwise(int motorSpeed, int *motorPins);
-void stepMotor(int stepPhase, int motorSpeed, int *motorPins);
+int GetMotorDirection(int sensorPin, int sensorReference);
+void RunMotor(int stepPhase, int motorValue, int *motorPins);
 void setOutput(int stepPhase, int *motorPins);
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
