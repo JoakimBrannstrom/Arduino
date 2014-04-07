@@ -1,8 +1,8 @@
 #ifndef _VSARDUINO_H_
 #define _VSARDUINO_H_
-//Board = Arduino Uno
-#define __AVR_ATmega328p__
-#define __AVR_ATmega328P__
+//Board = Arduino Leonardo
+#define __AVR_ATmega32u4__
+#define __AVR_ATmega32U4__
 #define ARDUINO 105
 #define ARDUINO_MAIN
 #define __AVR__
@@ -34,10 +34,14 @@ extern "C" void __cxa_pure_virtual() {;}
 int CalibrateSensor(int sensorPin, int iteration);
 //
 int GetMotorDirection(int sensorPin, int sensorReference);
-void RunMotor(int stepPhase, int motorValue, int *motorPins);
-void setOutput(int stepPhase, int *motorPins);
+void WriteMotor(int stepPhase, int motorValue, byte *motor);
+void setOutput(int stepPhase, byte *motor);
+void RunMotor(byte motorX, byte motorY);
+void ClearRegisters();
+void WriteRegisters();
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
-#include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard\pins_arduino.h" 
+#include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\leonardo\pins_arduino.h" 
 #include "D:\Dropbox\Dev\Git\Arduino\StepperMotor\StepperMotor.ino"
+#include "D:\Dropbox\Dev\Git\Arduino\StepperMotor\StepperMotor2.ino"
 #endif
